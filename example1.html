@@ -3,7 +3,7 @@
 <html>
 <!--
 
-Copyright (c) 2013  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
+Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
 
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -67,7 +67,7 @@ var showDetails = function(dataJSON){
   <script type="text/javascript">
 // document.getElementById("appID").innerHTML = params["app_id"];
 // document.getElementById("appKey").innerHTML = params["app_key"];
-var searcher = new Openphacts.ConceptWikiSearch("https://beta.openphacts.org", params["app_id"], params["app_key"]);  
+var searcher = new Openphacts.ConceptWikiSearch("https://beta.openphacts.org/1.3", params["app_id"], params["app_key"]);  
 var callback = function(success, status, response){
   document.getElementById("json").innerHTML = JSON.stringify(response);
   html = "<table>";
