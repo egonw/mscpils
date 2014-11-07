@@ -48,8 +48,7 @@ for ( var i = 0; i < prmarr.length; i++) {
 }
 var showDetails = function(dataJSON){
     data = JSON.parse(unescape(dataJSON));
-    // document.getElementById("details").innerHTML = JSON.stringify(data);
-    document.getElementById("details").innerHTML = data._about;
+    document.getElementById("details").innerHTML = "<a href=\"" + data._about + "\">" + data._about + "</a>";
 };
   </script>
 
@@ -71,7 +70,7 @@ var showDetails = function(dataJSON){
 // document.getElementById("appKey").innerHTML = params["app_key"];
 var searcher = new Openphacts.ConceptWikiSearch("https://beta.openphacts.org/1.3", params["app_id"], params["app_key"]);  
 var callback = function(success, status, response){
-  document.getElementById("json").innerHTML = JSON.stringify(response);
+  document.getElementById("json").innerHTML = "<pre>" + JSON.stringify(response, null, '  ') + "</pre>";
   html = "<table>";
   for (var i=0; i<response.length; i++) {
     html += "<tr>";
