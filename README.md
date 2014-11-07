@@ -1,6 +1,13 @@
 # Programming for the Life Sciences
 
-These examples make use of ops.js by Ian Dunlop, available from http://github.com/openphacts/.
+These examples make use of ops.js by Ian Dunlop, available from http://github.com/openphacts/
+and of d3.js, see http://d3js.org/.
+
+## Examples
+
+* example1.html: shows a single Open PHACTS web service call and extracs the app_id and app_key from the URL
+* example2.html: shows JavaScript data types
+* example3.html: basic, static d3.s example
 
 ## License
 
