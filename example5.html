@@ -56,8 +56,10 @@ for ( var i = 0; i < prmarr.length; i++) {
   <h3>OpenPHACTS / d3.js mash up</h3>
   <p>This example lists the number of activities for paracetamol by unit.</p>
   <p><div class="chart"></div></p>
-  <pre><div class="json1">1</div></pre>
-  <pre><div class="json2">2</div></pre>
+  <h4>JSON 1</h4>
+  <pre><div class="json1">Pending...</div></pre>
+  <h4>JSON 2</h4>
+  <pre><div class="json2">Pending...</div></pre>
 
   <!-- dynamically create a table with type information -->
   <script type="text/javascript">
@@ -74,7 +76,9 @@ var callback = function(success, status, response){
   max = 0
   for (i=0; i<list.length; i++) {
     item = list[i]
-    units = item.standardUnits
+    if (item["activity_unit"]) {
+      units = item["activity_unit"].prefLabel;
+    }
     if (!units) units = "none"
     if (unitCounts[units]) {
       unitCounts[units] = unitCounts[units] + 1
@@ -139,7 +143,7 @@ var callbackCount = function(success, status, response){
   sources.compoundPharmacology(compound, 1, count, callback);
 };
 
-sources.compoundPharmacologyCount("http://www.conceptwiki.org/concept/a99023df-c3d2-4fa5-82d1-89d3a1d16e0e", callbackCount);
+sources.compoundPharmacologyCount("http://www.conceptwiki.org/concept/342a03eb-3311-49ac-8d6e-8bf9b605dab1", callbackCount);
 
   </script>
 </body>
