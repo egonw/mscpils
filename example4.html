@@ -78,7 +78,9 @@ var callback = function(success, status, response){
   max = 0
   for (i=0; i<list.length; i++) {
     item = list[i]
-    units = item.standardUnits;
+    if (item["activity_unit"]) {
+      units = item["activity_unit"].prefLabel;
+    }
     if (!units) units = "none";
     // did I encounter this unit before?
     if (unitCounts[units]) {
