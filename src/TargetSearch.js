@@ -1,3 +1,5 @@
+//This content is released under the MIT License, http://opensource.org/licenses/MIT. See licence.txt for more details.
+
 Openphacts.TargetSearch = function TargetSearch(baseURL, appID, appKey) {
 	this.baseURL = baseURL;
 	this.appID = appID;
