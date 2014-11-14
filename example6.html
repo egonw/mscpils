@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--
+
+Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+<head>
+  <title>OpenPHACTS Jasmine Spec Runner</title>
+  <script src="lib/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="lib/purl.js"></script>
+  <script src="lib/d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="src/OPS.js"></script>
+  <script type="text/javascript" src="src/TargetSearch.js"></script>
+
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+</style>
+
+</head>
+
+<body>
+  <h3>Molecular weights of compounds with activities measured against "Sodium channel protein type 10 subunit alpha"</h3>
+  <p><div class="chart"></div></p>
+  <h4>JSON 1</h4>
+  <pre><div class="json1">Pending...</div></pre>
+  <h4>JSON 2</h4>
+  <pre><div class="json2">Pending...</div></pre>
+
+  <!-- dynamically create a table with type information -->
+  <script type="text/javascript">
+var sources = new Openphacts.TargetSearch("https://beta.openphacts.org/1.4", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");  
+
+var callback = function(success, status, response){
+  d3.select(".json2").html(JSON.stringify(response, undefined, 2));
+
+  var data = [];
+
+  // extract the molecular weights and put them in a vector (array)
+  list = response.items
+  max = 0
+  values = []
+  for (i=0; i<list.length; i++) {
+    matches = list[i].hasMolecule.exactMatch
+    for (match=0; match<matches.length; match++) {
+      if (matches[match].molweight != undefined) {
+        mw = matches[match].molweight
+        data.push({name:i, value:mw})
+        values[i] = mw
+      }
+    }
+  }
+  console.log(values)
+
+// Formatters for counts and times (converting numbers to Dates).
+var formatCount = d3.format(",.0f"),
+    formatTime = d3.time.format("%H:%M"),
+    formatMinutes = function(d) { return formatTime(new Date(2012, 0, 1, 0, d)); };
+
+var margin = {top: 10, right: 30, bottom: 30, left: 30},
+    width = 560 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .domain([0, Math.max.apply(null, values)])
+    .range([0, width]);
+
+// Generate a histogram using twenty uniformly-spaced bins.
+var data = d3.layout.histogram()
+    .bins(x.ticks(35))
+    (values);
+
+var y = d3.scale.linear()
+    .domain([0, d3.max(data, function(d) { return d.y; })])
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var svg = d3.select(".chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var bar = svg.selectAll(".bar")
+    .data(data)
+  .enter().append("g")
+    .attr("class", "bar")
+    .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+bar.append("rect")
+    .attr("x", 1)
+    .attr("width", x(data[0].dx) - 1)
+    .attr("height", function(d) { return height - y(d.y); });
+
+bar.append("text")
+    .attr("dy", ".75em")
+    .attr("y", 6)
+    .attr("x", x(data[0].dx) / 2)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return formatCount(d.y); });
+
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+};
+var callbackCount = function(success, status, response){
+  d3.select(".json1").html(JSON.stringify(response, undefined, 2));
+  count = response.primaryTopic.targetPharmacologyTotalResults
+  target = response.primaryTopic._about
+  sources.targetPharmacology(target, 1, count, callback);
+};
+
+sources.targetPharmacologyCount("http://www.conceptwiki.org/concept/00059958-a045-4581-9dc5-e5a08bb0c291", callbackCount);
+  </script>
+</body>
+</html>
+
