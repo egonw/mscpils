@@ -59,11 +59,11 @@ var searcher = new Openphacts.ConceptWikiSearch("https://beta.openphacts.org/1.4
 var callback = function(success, status, response){
   document.getElementById("json").innerHTML = "<pre>" + JSON.stringify(response, null, '  ') + "</pre>";
   html = "<table>";
-  for (var i=0; i<response.length; i++) {
+  for (var i=0; i<response.primaryTopic.result.length; i++) {
     html += "<tr>";
     html += "<td>";
-    dataJSON = JSON.stringify(response[i]);
-    html += "Name: <span onClick=\"showDetails('" + escape(dataJSON) + "\')\">" + response[i].prefLabel + "</span>";
+    dataJSON = JSON.stringify(response.primaryTopic.result[i]);
+    html += "Name: <span onClick=\"showDetails('" + escape(dataJSON) + "\')\">" + response.primaryTopic.result[i].prefLabel + "</span>";
     html += "</td>";
     html += "</tr>";
   }
