@@ -6,18 +6,23 @@ Openphacts.ActivitySearch = function ActivitySearch(baseURL, appID, appKey) {
 	this.appKey = appKey;
 }
 
-Openphacts.ActivitySearch.prototype.getTypes = function(callback) {
+Openphacts.ActivitySearch.prototype.getTypes = function(activityUnit, page, pageSize, orderBy, lens, callback) {
+    params={};
+    params['_format'] = "json";
+    params['app_key'] = this.appKey;
+    params['app_id'] = this.appID;
+    activityUnit ? params['activity_unit'] = activityUnit : '';
+    page ? params['_page'] = page : '';
+    pageSize ? params['_pageSize'] = pageSize : '';
+    orderBy ? params['_orderBy'] = orderBy : '';
+    lens ? params['_lens'] = lens : '';
 	var activityQuery = $.ajax({
 		url: this.baseURL + '/pharmacology/filters/activities',
-                dataType: 'json',
+        dataType: 'json',
 		cache: true,
-		data: {
-			_format: "json",
-			app_id: this.appID,
-			app_key: this.appKey
-		},
+		data: params,
 		success: function(response, status, request) {
-			callback.call(this, true, request.status, response.result.primaryTopic);
+			callback.call(this, true, request.status, response.result);
 		},
 		error: function(request, status, error) {
 			callback.call(this, false, request.status);
@@ -25,18 +30,46 @@ Openphacts.ActivitySearch.prototype.getTypes = function(callback) {
 	});
 }
 
-Openphacts.ActivitySearch.prototype.getUnits = function(activityType, callback) {
+Openphacts.ActivitySearch.prototype.getUnits = function(activityType, lens, callback) {
+    params={};
+    params['_format'] = "json";
+    params['app_key'] = this.appKey;
+    params['app_id'] = this.appID;
+    lens ? params['_lens'] = lens : '';
+    var unitsURL = null;
+    activityType != null ? unitsURL = '/pharmacology/filters/units/' + activityType : unitsURL = '/pharmacology/filters/units';
 	var activityQuery = $.ajax({
 		url: this.baseURL + '/pharmacology/filters/units/' + activityType,
-                dataType: 'json',
+        dataType: 'json',
 		cache: true,
-		data: {
-			_format: "json",
-			app_id: this.appID,
-			app_key: this.appKey
-		},
+		data: params,
 		success: function(response, status, request) {
-			callback.call(this, true, request.status, response.result.primaryTopic);
+			callback.call(this, true, request.status, response.result);
+		},
+		error: function(request, status, error) {
+			callback.call(this, false, request.status);
+		}
+	});
+}
+
+Openphacts.ActivitySearch.prototype.getAllUnits = function(page, pageSize, orderBy, lens, callback) {
+    params={};
+    params['_format'] = "json";
+    params['app_key'] = this.appKey;
+    params['app_id'] = this.appID;
+    lens ? params['_lens'] = lens : '';
+    page ? params['_page'] = page : '';
+    pageSize ? params['_pageSize'] = pageSize : '';
+    orderBy ? params['_orderBy'] = orderBy : '';
+
+    var unitsURL = null;
+	var activityQuery = $.ajax({
+		url: this.baseURL + '/pharmacology/filters/units',
+        dataType: 'json',
+		cache: true,
+		data: params,
+		success: function(response, status, request) {
+			callback.call(this, true, request.status, response.result);
 		},
 		error: function(request, status, error) {
 			callback.call(this, false, request.status);
@@ -45,17 +78,29 @@ Openphacts.ActivitySearch.prototype.getUnits = function(activityType, callback) 
 }
 
 Openphacts.ActivitySearch.prototype.parseTypes = function(response) {
-        var activityTypes = [];
-	$.each(response.normalised_activity_type, function(i, type) {
-            activityTypes.push({uri: type["_about"], label: type.label});
-	});
+    var activityTypes = [];
+    if ($.isArray(response.items)) {
+	    $.each(response.items, function(i, item) {
+          activityTypes.push({uri: item["_about"], label: item.label});
+	    });
+    } else {
+        activityTypes.push({uri: response.items["_about"], label: response.items.label});
+    }
 	return activityTypes;
 }
 
 Openphacts.ActivitySearch.prototype.parseUnits = function(response) {
-        var units = [];
-	$.each(response.unit, function(i, type) {
+    var units = [];
+	$.each(response.primaryTopic.unit, function(i, type) {
             units.push({uri: type["_about"], label: type.label});
+	});
+	return units;
+}
+
+Openphacts.ActivitySearch.prototype.parseAllUnits = function(response) {
+    var units = [];
+	$.each(response.items, function(i, item) {
+            units.push({uri: item["_about"], label: item.label});
 	});
 	return units;
 }
