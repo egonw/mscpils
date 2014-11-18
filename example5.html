@@ -131,7 +131,11 @@ var callbackCount = function(success, status, response){
     d3.select(".json1").html(JSON.stringify(response, undefined, 2));
     count = response.primaryTopic.compoundPharmacologyTotalResults
     compound = response.primaryTopic._about
-    sources.compoundPharmacology(compound, 1, count, callback);
+    sources.compoundPharmacology(compound,
+        null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null,
+        1, count, null, null, callback
+    );
   } else {
     d3.select(".json1").html("Error while calling the webservice: " + status);
   }

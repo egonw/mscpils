@@ -72,7 +72,7 @@ body {
   <script type="text/javascript">
 var sources = new Openphacts.TargetSearch("https://beta.openphacts.org/1.4", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");  
 
-var callback = function(success, status, response){
+var callback = function(success, status, response) {
   d3.select(".json2").html(JSON.stringify(response, undefined, 2));
 
   var data = [];
@@ -152,10 +152,19 @@ var callbackCount = function(success, status, response){
   d3.select(".json1").html(JSON.stringify(response, undefined, 2));
   count = response.primaryTopic.targetPharmacologyTotalResults
   target = response.primaryTopic._about
-  sources.targetPharmacology(target, 1, count, callback);
+  sources.targetPharmacology(target,
+    null, null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null, null,
+    1, count, null, null, callback
+  );
 };
 
-sources.targetPharmacologyCount("http://www.conceptwiki.org/concept/00059958-a045-4581-9dc5-e5a08bb0c291", callbackCount);
+sources.targetPharmacologyCount(
+  "http://www.conceptwiki.org/concept/00059958-a045-4581-9dc5-e5a08bb0c291",
+  null, null, null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null, null,
+  callbackCount
+);
   </script>
 </body>
 </html>
