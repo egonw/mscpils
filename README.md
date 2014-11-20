@@ -19,3 +19,5 @@ The used ops.js libraries are licensed with an unknown license (the author has b
 Information can be found at https://github.com/openphacts/ops.js/
 
 The ops.js, in turn, uses jQuery, which is licensed MIT.
+
+Whatever.
