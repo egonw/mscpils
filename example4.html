@@ -53,7 +53,7 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
 var sources = new Openphacts.CompoundSearch("https://beta.openphacts.org/1.4", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
 
 var callback = function(success, status, response){
-  if (success || response = 200) {
+  if (success || response == 200) {
     d3.select(".json2").html(JSON.stringify(response, undefined, 2));
 
     var data = [];
@@ -106,7 +106,7 @@ var callback = function(success, status, response){
   }
 };
 var callbackCount = function(success, status, response){
-  if (success || response = 200) {
+  if (success || response == 200) {
     d3.select(".json1").html(JSON.stringify(response, undefined, 2));
     count = response.primaryTopic.compoundPharmacologyTotalResults
     compound = response.primaryTopic._about
