@@ -53,7 +53,7 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
 var sources = new Openphacts.CompoundSearch("https://beta.openphacts.org/1.4", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
 
 var callback = function(success, status, response){
-  if (success) {
+  if (success || response = 200) {
     d3.select(".json2").html(JSON.stringify(response, undefined, 2));
 
     var data = [];
@@ -102,11 +102,11 @@ var callback = function(success, status, response){
       .style("margin", "1px")
       .text(function(d) { if (d.value > 5) return d.value + " ( " + d.name + ")"; return d.value; });
   } else {
-    d3.select(".json2").html("Error while calling the webservice: " + status);
+    d3.select(".json2").html("Error while calling the compoundPharmacology webservice: " + status);
   }
 };
 var callbackCount = function(success, status, response){
-  if (success) {
+  if (success || response = 200) {
     d3.select(".json1").html(JSON.stringify(response, undefined, 2));
     count = response.primaryTopic.compoundPharmacologyTotalResults
     compound = response.primaryTopic._about
@@ -116,7 +116,7 @@ var callbackCount = function(success, status, response){
         1, count, null, null, callback
     );
   } else {
-    d3.select(".json1").html("Error while calling the webservice: " + status);
+    d3.select(".json1").html("Error while calling the compoundPharmacologyCount webservice: " + status);
   }
 };
 
