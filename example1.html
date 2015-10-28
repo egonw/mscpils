@@ -55,7 +55,7 @@ var showDetails = function(dataJSON){
   <h3>JSON reply</h3>
   <p><div id="json">Nothing yet</div></p>
   <script type="text/javascript">
-var searcher = new Openphacts.ConceptWikiSearch("https://beta.openphacts.org/1.4", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");  
+var searcher = new Openphacts.ConceptWikiSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
 var callback = function(success, status, response){
   document.getElementById("json").innerHTML = "<pre>" + JSON.stringify(response, null, '  ') + "</pre>";
   html = "<table>";

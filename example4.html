@@ -50,10 +50,13 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
 
   <!-- dynamically create a table with type information -->
   <script type="text/javascript">
-var sources = new Openphacts.CompoundSearch("https://beta.openphacts.org/1.4", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
+var sources = new Openphacts.CompoundSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
 
 var callback = function(success, status, response){
-  if (success || response == "200") {
+  console.log(success)
+  console.log(status)
+  console.log(success || status == 200)
+  if (success && status == 200) {
     d3.select(".json2").html(JSON.stringify(response, undefined, 2));
 
     var data = [];
@@ -102,19 +105,16 @@ var callback = function(success, status, response){
       .style("margin", "1px")
       .text(function(d) { if (d.value > 5) return d.value + " ( " + d.name + ")"; return d.value; });
   } else {
-    d3.select(".json2").html("Error while calling the compoundPharmacology webservice: " + status);
+    d3.select(".json2").html("Error while calling the compoundPharmacology webservice: " + status + " " + success);
   }
 };
 var callbackCount = function(success, status, response){
-  if (success || response == "200") {
+  if (success || status == 200) {
     d3.select(".json1").html(JSON.stringify(response, undefined, 2));
     count = response.primaryTopic.compoundPharmacologyTotalResults
+    console.log("Hit count: " + count);
     compound = response.primaryTopic._about
-    sources.compoundPharmacology(compound,
-        null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null,
-        1, count, null, null, callback
-    );
+    console.log("Compound: " + compound);
   } else {
     d3.select(".json1").html("Error while calling the compoundPharmacologyCount webservice: " + status);
   }
@@ -125,6 +125,14 @@ sources.compoundPharmacologyCount(
   null, null, null, null, null, null, null, null, null, null, null,
   null, null, null, null, null, null, callbackCount
 );
+
+sources.compoundPharmacology(
+  "http://www.conceptwiki.org/concept/342a03eb-3311-49ac-8d6e-8bf9b605dab1",
+  null, null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null, null,
+  1, "all", null, null, callback
+);
+
   </script>
 </body>
 </html>
