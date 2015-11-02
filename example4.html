@@ -32,8 +32,7 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
   <!-- ops.js -->
   <script src="lib/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="lib/purl.js"></script>
-  <script type="text/javascript" src="src/OPS.js"></script>
-  <script type="text/javascript" src="src/CompoundSearch.js"></script>
+  <script type="text/javascript" src="src/combined.js"></script>
 
   <!-- d3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -50,7 +49,7 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
 
   <!-- dynamically create a table with type information -->
   <script type="text/javascript">
-var sources = new Openphacts.CompoundSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
+var sources = new CompoundSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
 
 var callback = function(success, status, response){
   console.log(success)
