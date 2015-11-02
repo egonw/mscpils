@@ -33,8 +33,7 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
   <script type="text/javascript" src="lib/purl.js"></script>
 
   <!-- include source files here... -->
-  <script type="text/javascript" src="src/OPS.js"></script>
-  <script type="text/javascript" src="src/ConceptWikiSearch.js"></script>
+  <script type="text/javascript" src="src/combined.js"></script>
 
   <!-- setup -->
   <script type="text/javascript">
@@ -55,7 +54,7 @@ var showDetails = function(dataJSON){
   <h3>JSON reply</h3>
   <p><div id="json">Nothing yet</div></p>
   <script type="text/javascript">
-var searcher = new Openphacts.ConceptWikiSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
+var searcher = new ConceptWikiSearch("https://ops2.few.vu.nl/2.0", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
 var callback = function(success, status, response){
   document.getElementById("json").innerHTML = "<pre>" + JSON.stringify(response, null, '  ') + "</pre>";
   html = "<table>";

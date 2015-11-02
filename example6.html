@@ -32,8 +32,7 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
   <script src="lib/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="lib/purl.js"></script>
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
-  <script type="text/javascript" src="src/OPS.js"></script>
-  <script type="text/javascript" src="src/TargetSearch.js"></script>
+  <script type="text/javascript" src="src/combined.js"></script>
 
 <style>
 
@@ -70,7 +69,7 @@ body {
 
   <!-- dynamically create a table with type information -->
   <script type="text/javascript">
-var sources = new Openphacts.TargetSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");  
+var sources = new TargetSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");  
 
 var callback = function(success, status, response) {
   d3.select(".json2").html(JSON.stringify(response, undefined, 2));
