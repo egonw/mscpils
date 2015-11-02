@@ -1,9 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<head>
+  <title>d3.js example</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <!--
 
-Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
+Copyright (c) 2013-2015  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
 
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -27,8 +30,7 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
  OTHER DEALINGS IN THE SOFTWARE.
 
 -->
-<head>
-  <title>d3.js example</title>
+
   <!-- ops.js -->
   <script src="lib/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="lib/purl.js"></script>
@@ -36,16 +38,23 @@ Copyright (c) 2013-2014  Egon Willighagen <egon.willighagen@maastrichtuniversity
 
   <!-- d3.js -->
   <script src="lib/d3.v3.min.js" charset="utf-8"></script>
+
+  <style>
+    div {
+      font-family: "Courier New", monospace;
+      white-space: pre;
+    }
+  </style>
 </head>
 
 <body>
   <h3>OpenPHACTS / d3.js mash up</h3>
   <p>This example lists the number of activities for paracetamol by unit.</p>
-  <p><div class="chart"></div></p>
+  <div class="chart"></div>
   <h4>JSON 1</h4>
-  <pre><div class="json1">Pending...</div></pre>
+  <div class="json" id="json1">Pending...</div>
   <h4>JSON 2</h4>
-  <pre><div class="json2">Pending...</div></pre>
+  <div class="json" id="json2">Pending...</div>
 
   <!-- dynamically create a table with type information -->
   <script type="text/javascript">
@@ -53,7 +62,7 @@ var sources = new CompoundSearch("https://beta.openphacts.org/1.5", "91f5d4d0", 
 
 var callback = function(success, status, response){
   if (success && status == 200) {
-    d3.select(".json2").html(JSON.stringify(response, undefined, 2));
+    d3.select("#json2").html(JSON.stringify(response, undefined, 2));
 
     var data = [];
 
@@ -133,7 +142,7 @@ var callbackCount = function(success, status, response){
     compound = response.primaryTopic._about
     console.log("Compound: " + compound);
   } else {
-    d3.select(".json1").html("Error while calling the compoundPharmacologyCount webservice: " + status);
+    d3.select("#json1").html("Error while calling the compoundPharmacologyCount webservice: " + status);
   }
 };
 
