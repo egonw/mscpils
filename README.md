@@ -10,6 +10,7 @@ These examples make use of ops.js by Ian Dunlop (see below) and of d3.js, see ht
 * [example4.html](http://egonw.github.io/mscpils/example4.html): lists the number of activities for paracetamol as bar plot
 * [example5.html](http://egonw.github.io/mscpils/example5.html): lists the number of activities for paracetamol as pie chart
 * [example6.html](http://egonw.github.io/mscpils/example6.html): shows a histogram with moleculair weights of compounds with activity against a certain target
+* [example7.html](http://egonw.github.io/mscpils/example7.html): same as examples 5, but now using [Dimple](http://dimplejs.org/)
 
 The source code can be found in the [gh_pages branch](https://github.com/egonw/mscpils/tree/gh-pages).
 
