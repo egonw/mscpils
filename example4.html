@@ -65,7 +65,7 @@ var callback = function(success, status, response){
   console.log(status)
   console.log(success || status == 200)
   if (success && status == 200) {
-    d3.select(".json2").html(JSON.stringify(response, undefined, 2));
+    d3.select("#json2").html(JSON.stringify(response, undefined, 2));
 
     var data = [];
 
@@ -118,7 +118,7 @@ var callback = function(success, status, response){
 };
 var callbackCount = function(success, status, response){
   if (success || status == 200) {
-    d3.select(".json1").html(JSON.stringify(response, undefined, 2));
+    d3.select("#json1").html(JSON.stringify(response, undefined, 2));
     count = response.primaryTopic.compoundPharmacologyTotalResults
     console.log("Hit count: " + count);
     compound = response.primaryTopic._about

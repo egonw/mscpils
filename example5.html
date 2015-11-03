@@ -131,12 +131,12 @@ var callback = function(success, status, response){
         .style("text-anchor", "middle")
         .text(function(d) { if (d.data.value > 10) return d.data.name; return "";});
   } else {
-    d3.select(".json2").html("Error while calling the webservice: " + status);
+    d3.select("#json2").html("Error while calling the webservice: " + status);
   }
 };
 var callbackCount = function(success, status, response){
   if (success || status == 200) {
-    d3.select(".json1").html(JSON.stringify(response, undefined, 2));
+    d3.select("#json1").html(JSON.stringify(response, undefined, 2));
     count = response.primaryTopic.compoundPharmacologyTotalResults
     console.log("Hit count: " + count);
     compound = response.primaryTopic._about
