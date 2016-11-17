@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example 1</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!--
+
+Copyright (c) 2013-2015  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+
+-->
+
+  <script src="lib/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="lib/purl.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/combined.js"></script>
+
+  <!-- setup -->
+  <script type="text/javascript">
+var showDetails = function(dataJSON){
+    data = JSON.parse(unescape(dataJSON));
+    document.getElementById("details").innerHTML = "<a href=\"" + data._about + "\">" + data._about + "</a>";
+};
+  </script>
+
+</head>
+
+<body>
+  <h3>Output</h3>
+  <h3>Search Results</h3>
+  <div id="table"></div>
+  <h3>Compound Details</h3>
+  <div id="details"></div>
+  <h3>JSON reply</h3>
+  <div id="json">Nothing yet</div>
+  <script type="text/javascript">
+var searcher = new ConceptWikiSearch("https://ops2.few.vu.nl/2.0", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
+var callback = function(success, status, response){
+  document.getElementById("json").innerHTML = "<pre>" + JSON.stringify(response, null, '  ') + "</pre>";
+  html = "<table>";
+  for (var i=0; i<response.primaryTopic.result.length; i++) {
+    html += "<tr>";
+    html += "<td>";
+    dataJSON = JSON.stringify(response.primaryTopic.result[i]);
+    html += "Name: <span onClick=\"showDetails('" + escape(dataJSON) + "\')\">" + response.primaryTopic.result[i].prefLabel + "</span>";
+    html += "</td>";
+    html += "</tr>";
+  }
+  html += "</table>";
+  document.getElementById("table").innerHTML = html;
+};
+searcher.byTag('Aspirin', '5', '4', '07a84994-e464-4bbf-812a-a4b96fa3d197', callback);
+  </script>
+</body>
+</html>
+
