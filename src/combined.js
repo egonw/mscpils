@@ -444,7 +444,7 @@ ActivitySearch.prototype.getTypes = function(activityUnit, page, pageSize, order
         url: this.baseURL + '/pharmacology/filters/activities?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -470,7 +470,7 @@ ActivitySearch.prototype.getUnits = function(activityType, lens, callback) {
         url: this.baseURL + unitsURL + '?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -497,7 +497,7 @@ ActivitySearch.prototype.getAllUnits = function(page, pageSize, orderBy, lens, c
         url: this.baseURL + '/pharmacology/filters/units?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -581,7 +581,7 @@ CompoundSearch.prototype.fetchCompound = function(URI, lens, callback) {
         url: this.baseURL + '/compound?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -619,7 +619,7 @@ CompoundSearch.prototype.fetchCompoundBatch = function(URIList, lens, callback) 
         url: this.baseURL + '/compound/batch?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -656,7 +656,7 @@ CompoundSearch.prototype.compoundClassMembersCount = function(URI, lens, callbac
         url: this.baseURL + '/compound/members/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -700,7 +700,7 @@ CompoundSearch.prototype.compoundClassMembers = function(URI, page, pageSize, or
         url: this.baseURL + '/compound/members/pages?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -776,7 +776,7 @@ CompoundSearch.prototype.compoundPharmacology = function(URI, assayOrganism, tar
         url: this.baseURL + '/compound/pharmacology/pages?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -846,7 +846,7 @@ CompoundSearch.prototype.compoundPharmacologyCount = function(URI, assayOrganism
         url: this.baseURL + '/compound/pharmacology/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -878,7 +878,7 @@ CompoundSearch.prototype.compoundClassifications = function(URI, tree, callback)
         url: this.baseURL + '/compound/classifications?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -1789,7 +1789,7 @@ ConceptWikiSearch.prototype.byTag = function(query, limit, branch, type, callbac
         url: this.baseURL + '/search/byTag?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -1824,7 +1824,7 @@ ConceptWikiSearch.prototype.freeText = function(query, limit, branch, callback) 
         url: this.baseURL + '/search/freetext?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -1852,7 +1852,7 @@ ConceptWikiSearch.prototype.findCompounds = function(query, limit, branch, callb
         url: this.baseURL + '/search/byTag?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -1880,7 +1880,7 @@ ConceptWikiSearch.prototype.findTargets = function(query, limit, branch, callbac
         url: this.baseURL + '/search/byTag?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -1905,7 +1905,7 @@ ConceptWikiSearch.prototype.findConcept = function(uuid, branch, callback) {
         url: this.baseURL + '/getConceptDescription?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2058,7 +2058,7 @@ DataSources.prototype.getSources = function(callback) {
         url: this.baseURL + '/sources?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2119,7 +2119,7 @@ DiseaseSearch.prototype.fetchDisease = function(URI, lens, callback) {
         url: this.baseURL + '/disease?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2159,7 +2159,7 @@ DiseaseSearch.prototype.fetchDiseaseBatch = function(URIList, lens, callback) {
         url: this.baseURL + '/disease/batch?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2197,7 +2197,7 @@ DiseaseSearch.prototype.diseasesByTargetCount = function(URI, lens, callback) {
         url: this.baseURL + '/disease/byTarget/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2242,7 +2242,7 @@ DiseaseSearch.prototype.diseasesByTarget = function(URI, page, pageSize, orderBy
         url: this.baseURL + '/disease/byTarget?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2281,7 +2281,7 @@ Utils.nets({
         url: this.baseURL + '/disease/getTargets/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2325,7 +2325,7 @@ Utils.nets({
         url: this.baseURL + '/disease/getTargets?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2363,7 +2363,7 @@ Utils.nets({
         url: this.baseURL + '/disease/assoc/byTarget/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2407,7 +2407,7 @@ Utils.nets({
         url: this.baseURL + '/disease/assoc/byTarget?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2451,7 +2451,7 @@ Utils.nets({
         url: this.baseURL + '/disease/assoc/byDisease?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2489,7 +2489,7 @@ Utils.nets({
         url: this.baseURL + '/disease/assoc/byDisease/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -2833,7 +2833,7 @@ MapSearch.prototype.mapURL = function(URI, targetUriPattern, graph, lens, callba
         url: this.baseURL + '/mapUri?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3137,7 +3137,7 @@ PathwaySearch.prototype.information = function(URI, lens, callback) {
         url: this.baseURL + '/pathway?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3179,7 +3179,7 @@ PathwaySearch.prototype.byCompound = function(URI, organism, lens, page, pageSiz
         url: this.baseURL + '/pathways/byCompound?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3213,7 +3213,7 @@ PathwaySearch.prototype.countPathwaysByCompound = function(URI, organism, lens, 
         url: this.baseURL + '/pathways/byCompound/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3255,7 +3255,7 @@ PathwaySearch.prototype.byTarget = function(URI, organism, lens, page, pageSize,
         url: this.baseURL + '/pathways/byTarget?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3289,7 +3289,7 @@ PathwaySearch.prototype.countPathwaysByTarget = function(URI, organism, lens, ca
         url: this.baseURL + '/pathways/byTarget/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3327,7 +3327,7 @@ PathwaySearch.prototype.getTargets = function(URI, lens, callback) {
         url: this.baseURL + '/pathway/getTargets?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3365,7 +3365,7 @@ PathwaySearch.prototype.getCompounds = function(URI, lens, callback) {
         url: this.baseURL + '/pathway/getCompounds?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3396,7 +3396,7 @@ PathwaySearch.prototype.getInteractions = function(URI, callback) {
         url: this.baseURL + '/pathway/getInteractions?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3430,7 +3430,7 @@ PathwaySearch.prototype.byReference = function(URI, organism, lens, page, pageSi
         url: this.baseURL + '/pathways/byReference?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3459,7 +3459,7 @@ PathwaySearch.prototype.countPathwaysByReference = function(URI, organism, lens,
         url: this.baseURL + '/pathways/byReference/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3484,7 +3484,7 @@ PathwaySearch.prototype.getReferences = function(URI, lens, callback) {
         url: this.baseURL + '/pathway/getReferences?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3516,7 +3516,7 @@ PathwaySearch.prototype.countPathways = function(organism, lens, callback) {
         url: this.baseURL + '/pathways/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3554,7 +3554,7 @@ PathwaySearch.prototype.countInteractionsByEntity = function(URI, organism, dire
         url: this.baseURL + '/pathways/interactions/byEntity/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3600,7 +3600,7 @@ PathwaySearch.prototype.getInteractionsByEntity = function(URI, organism, direct
         url: this.baseURL + '/pathways/interactions/byEntity?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3643,7 +3643,7 @@ PathwaySearch.prototype.list = function(organism, lens, page, pageSize, orderBy,
         url: this.baseURL + '/pathways?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -3681,7 +3681,7 @@ PathwaySearch.prototype.organisms = function(lens, page, pageSize, orderBy, call
         url: this.baseURL + '/pathways/organisms?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4084,7 +4084,7 @@ StructureSearch.prototype.exact = function(smiles, matchType, callback) {
         url: this.baseURL + '/structure/exact?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4114,7 +4114,7 @@ StructureSearch.prototype.substructure = function(smiles, molType, start, count,
         url: this.baseURL + '/structure/substructure?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4141,7 +4141,7 @@ params={};
         url: this.baseURL + '/structure?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4169,7 +4169,7 @@ params={};
         url: this.baseURL + '/structure?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4202,7 +4202,7 @@ StructureSearch.prototype.similarity = function(smiles, type, threshold, alpha, 
         url: this.baseURL + '/structure/similarity?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4230,7 +4230,7 @@ params={};
         url: this.baseURL + '/structure?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4331,7 +4331,7 @@ TargetSearch.prototype.fetchTarget = function(URI, lens, callback) {
         url: this.baseURL + '/target?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4370,7 +4370,7 @@ TargetSearch.prototype.fetchTargetBatch = function(URIList, lens, callback) {
         url: this.baseURL + '/target/batch?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4406,7 +4406,7 @@ TargetSearch.prototype.compoundsForTarget = function(URI, callback) {
         url: this.baseURL + '/target/classificationsForCompounds?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4482,7 +4482,7 @@ TargetSearch.prototype.targetPharmacology = function(URI, assayOrganism, targetO
         url: this.baseURL + '/target/pharmacology/pages?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4553,7 +4553,7 @@ TargetSearch.prototype.targetPharmacologyCount = function(URI, assayOrganism, ta
         url: this.baseURL + '/target/pharmacology/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -4583,7 +4583,7 @@ TargetSearch.prototype.targetTypes = function(lens, callback) {
         url: this.baseURL + '/types?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5157,7 +5157,7 @@ TissueSearch.prototype.fetchTissue = function(URI, lens, callback) {
         url: this.baseURL + '/tissue?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5196,7 +5196,7 @@ TissueSearch.prototype.fetchTissueBatch = function(URIList, lens, callback) {
         url: this.baseURL + '/tissue/batch?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5301,7 +5301,7 @@ TreeSearch.prototype.getRootNodes = function(root, callback) {
         url: this.baseURL + '/tree?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5325,7 +5325,7 @@ TreeSearch.prototype.getChildNodes = function(URI, callback) {
         url: this.baseURL + '/tree/children?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5350,7 +5350,7 @@ TreeSearch.prototype.getParentNodes = function(URI, callback) {
         url: this.baseURL + '/tree/parents?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5391,7 +5391,7 @@ TreeSearch.prototype.getTargetClassPharmacologyCount = function(URI, assayOrgani
         url: this.baseURL + '/target/tree/pharmacology/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5438,7 +5438,7 @@ TreeSearch.prototype.getTargetClassPharmacologyPaginated = function(URI, assayOr
         url: this.baseURL + '/target/tree/pharmacology/pages?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5481,7 +5481,7 @@ Utils.nets({
         url: this.baseURL + '/compound/tree/pharmacology/count?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
@@ -5525,7 +5525,7 @@ Utils.nets({
         url: this.baseURL + '/compound/tree/pharmacology/pages?' + Utils.encodeParams(params),
         method: "GET",
         // 30 second timeout just in case
-        timeout: 30000,
+        timeout: 60000,
         headers: {
             "Accept": "application/json"
         }
