@@ -6,7 +6,7 @@
 
 <!--
 
-Copyright (c) 2013-2015  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
+Copyright (c) 2013-2017  Egon Willighagen <egon.willighagen@maastrichtuniversity.nl>
 
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -58,7 +58,7 @@ Copyright (c) 2013-2015  Egon Willighagen <egon.willighagen@maastrichtuniversity
 
   <!-- dynamically create a table with type information -->
   <script type="text/javascript">
-var sources = new CompoundSearch("https://beta.openphacts.org/1.5", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");  
+var sources = new CompoundSearch("https://beta.openphacts.org/2.1", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");  
 
 var callback = function(success, status, response){
   if (success && status == 200) {
@@ -156,7 +156,7 @@ sources.compoundPharmacology(
   "http://www.conceptwiki.org/concept/342a03eb-3311-49ac-8d6e-8bf9b605dab1",
   null, null, null, null, null, null, null, null,
   null, null, null, null, null, null, null, null,
-  1, "all", null, null, callback
+  null, "all", null, null, callback
 );
 
 </script>
