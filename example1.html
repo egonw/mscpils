@@ -56,7 +56,7 @@ var showDetails = function(dataJSON){
   <h3>JSON reply</h3>
   <div id="json">Nothing yet</div>
   <script type="text/javascript">
-var searcher = new ConceptWikiSearch("https://ops2.few.vu.nl/2.0", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
+var searcher = new ConceptWikiSearch("https://beta.openphacts.org/2.1/", "91f5d4d0", "1af5086da757e57c553bfa1351708d5f");
 var callback = function(success, status, response){
   document.getElementById("json").innerHTML = "<pre>" + JSON.stringify(response, null, '  ') + "</pre>";
   html = "<table>";
